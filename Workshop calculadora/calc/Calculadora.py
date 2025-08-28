@@ -13,7 +13,8 @@ class Calculadora:
 
     tipo='cientifica'
     
-    def __init__(self,operando1=0, operando2=0, operacion=None):
+    def __init__(self,operando1=None, operando2=None):
+        operacion=None
         self.operando1=operando1
         self.operando2=operando2
         self.operacion=operacion
@@ -36,17 +37,18 @@ class Calculadora:
         self.actualizaOperandos(operando1, operando2)
         try:
             self.operando1 = self.operando1 + self.operando2
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
+        
         
     def resta(self, operando1=None, operando2=None):
         self.operacion="-"
         self.actualizaOperandos(operando1, operando2)
         try:
             self.operando1 = self.operando1 - self.operando2
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
@@ -56,7 +58,7 @@ class Calculadora:
         self.actualizaOperandos(operando1, operando2)
         try:
             self.operando1 = self.operando1 * self.operando2
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
@@ -66,7 +68,7 @@ class Calculadora:
         self.actualizaOperandos(operando1, operando2)
         try:
             self.operando1 = self.operando1 / self.operando2
-            return self
+            return self.operando1
         except ZeroDivisionError:
             print('No se puede dividir por cero')
             return None
@@ -78,7 +80,7 @@ class Calculadora:
         self.operacion=f"**{exponente}"
         try:
             self.operando1 = self.operando1 ** exponente
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
@@ -87,7 +89,7 @@ class Calculadora:
         self.operacion="√"
         try:
             self.operando1 = math.sqrt(self.operando1)
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
@@ -98,7 +100,7 @@ class CalculadoraCientífica(Calculadora):
         self.operacion="sin"
         try:
             self.operando1 = math.sin(self.operando1)
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
@@ -107,16 +109,17 @@ class CalculadoraCientífica(Calculadora):
         self.operacion="cos"
         try:
             self.operando1 = math.cos(self.operando1)
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None
         
     def tangente(self):
-        self.operacion="tan"
+        self.operacion="tan" 
         try:
             self.operando1 = math.tan(self.operando1)
-            return self
+            return self.operando1
         except TypeError:
             print('El operando debe ser numérico')
             return None    
+
